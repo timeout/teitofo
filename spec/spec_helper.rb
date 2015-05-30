@@ -8,6 +8,7 @@ RSpec.configure do |config|
   end
 
   config.filter_run :focus
+  config.filter_run_excluding broken: true
   config.run_all_when_everything_filtered = true
   config.disable_monkey_patching!
   config.warnings = true

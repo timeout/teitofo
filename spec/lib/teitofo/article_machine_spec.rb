@@ -18,7 +18,7 @@ RSpec.describe TeiToFo::ArticleMachine do
     end
   end
 
-  describe '#stack_size' do
+  describe '#stack_size', broken: true do
     describe 'returns the number of states currently on the stack' do
       it 'returns 0' do
         expect(machine.stack_size).to eq(0)
