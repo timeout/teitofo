@@ -9,6 +9,10 @@ module TeiToFo
 
     attr_reader :state
 
+    def stack_size
+      return 0
+    end
+
     # delegate methods
     def on_element_start(name)
       @state = ArticlePart.new
