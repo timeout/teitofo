@@ -10,7 +10,14 @@ RSpec.describe TeiToFo::Stack do
 
   describe '#pop' do
     it 'pops an element off the stack' do
+      stack.push(:element)
       stack.pop
+    end
+
+    describe 'raises StackEmpty if empty stack is popped' do
+      it 'raises StackEmpty' do
+        expect{stack.pop}.to raise_error(TeiToFo::StackEmpty)
+      end
     end
   end
 

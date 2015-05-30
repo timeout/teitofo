@@ -1,3 +1,5 @@
+require 'teitofo/exceptions'
+
 module TeiToFo
   class Stack
 
@@ -14,6 +16,7 @@ module TeiToFo
     end
 
     def pop
+      raise StackEmpty.new("StackEmpty exception raise for: #{self}") if @data.empty?
       @data.pop
     end
 
