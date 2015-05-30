@@ -13,4 +13,12 @@ RSpec.describe TeiToFo::Stack do
       stack.pop
     end
   end
+
+  describe '#size' do
+    describe 'returns the stack\'s size' do
+      it 'returns 0' do
+        expect(stack.size).to eq(0)
+      end
+    end
+  end
 end

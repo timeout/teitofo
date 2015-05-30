@@ -3,6 +3,10 @@ module TeiToFo
     def initialize
     end
 
+    def size
+      0
+    end
+
     def push(element)
     end
 
