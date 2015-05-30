@@ -23,6 +23,11 @@ RSpec.describe TeiToFo::ArticleMachine do
       it 'returns 0' do
         expect(machine.stack_size).to eq(0)
       end
+
+      it 'returns 1' do
+        machine.on_element_start(:article)
+        expect(machine.stack_size).to eq(1)
+      end
     end
   end
 end
