@@ -55,5 +55,10 @@ RSpec.describe TeiToFo::Stack do
     it 'returns the element at index index' do
       expect{stack[0]}.to raise_error(TeiToFo::StackIndexOutOfBounds)
     end
+
+    it 'returns 30' do
+      [10, 20, 30].each { |n| stack.push(n) }
+      expect(stack[2]).to eq(30)
+    end
   end
 end

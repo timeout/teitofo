@@ -7,8 +7,19 @@ module TeiToFo
       @data = Array.new
     end
 
+    def empty?
+      @data.empty?
+    end
+
     def size
       @data.size
+    end
+
+    def [](n)
+      if (n < 0 or n >= self.size)
+        raise StackIndexOutOfBounds.new("for #{self}")
+      end
+      @data[n]
     end
 
     def push(element)
@@ -16,7 +27,7 @@ module TeiToFo
     end
 
     def pop
-      raise StackEmpty.new("StackEmpty exception raise for: #{self}") if @data.empty?
+      raise StackEmpty.new("for: #{self}") if @data.empty?
       @data.pop
     end
 
