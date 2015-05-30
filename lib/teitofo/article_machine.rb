@@ -1,3 +1,5 @@
+require 'teitofo/article_part'
+
 module TeiToFo
   class ArticleMachine
 
@@ -9,6 +11,8 @@ module TeiToFo
 
     # delegate methods
     def on_element_start(name)
+      @state = ArticlePart.new
+      @state.name = name
     end
 
     def on_element_end(name)
