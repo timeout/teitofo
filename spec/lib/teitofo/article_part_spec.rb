@@ -26,12 +26,12 @@ RSpec.describe TeiToFo::ArticlePart do
   describe '#number_of_parts' do
     let(:article_sub_part) { TeiToFo::ArticlePart.new }
     it 'returns 0 when no parts have been added' do
-      expect(article.number_of_parts).to eq(0)
+      expect(article_part.number_of_parts).to eq(0)
     end
 
     it 'returns the number of parts added' do
       article_part.add_part(article_sub_part)
-      expect(article.number_of_parts).to eq(1)
+      expect(article_part.number_of_parts).to eq(1)
     end
   end
 end
