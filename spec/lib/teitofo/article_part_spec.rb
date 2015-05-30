@@ -29,9 +29,16 @@ RSpec.describe TeiToFo::ArticlePart do
       expect(article_part.number_of_parts).to eq(0)
     end
 
-    it 'returns the number of parts added' do
+    it 'returns the number of parts added (1)' do
       article_part.add_part(article_sub_part)
       expect(article_part.number_of_parts).to eq(1)
+    end
+
+    it 'returns the number of parts added (2)' do
+      (1..4).each do |n|
+        article_part.add_part(article_sub_part)
+        expect(article_part.number_of_parts).to eq(n)
+      end
     end
   end
 end
