@@ -1,4 +1,6 @@
-Rspec.describe TeiToFo::ArticlePart do
+require 'teitofo/article_part'
+
+RSpec.describe TeiToFo::ArticlePart do
   let(:articlePart) { TeiToFo::ArticlePart.new }
   let(:article_name) { 'article' }
   describe '#name=' do
