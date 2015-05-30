@@ -19,7 +19,7 @@ module TeiToFo
       if (n < 0 or n >= self.size)
         raise StackIndexOutOfBounds.new("for #{self}")
       end
-      @data[n]
+      @data.reverse[n]
     end
 
     def push(element)
@@ -31,5 +31,8 @@ module TeiToFo
       @data.pop
     end
 
+    def top
+      @data.last
+    end
   end
 end

@@ -58,7 +58,16 @@ RSpec.describe TeiToFo::Stack do
 
     it 'returns 30' do
       [10, 20, 30].each { |n| stack.push(n) }
-      expect(stack[2]).to eq(30)
+      expect(stack[2]).to eq(10)
+      expect(stack[0]).to eq(30)
+    end
+  end
+
+  describe '#top' do
+    describe 'returns the top element of the stack' do
+      it 'returns nil' do
+        expect(stack.top).to be_nil
+      end
     end
   end
 end
