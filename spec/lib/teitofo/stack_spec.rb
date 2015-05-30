@@ -50,4 +50,10 @@ RSpec.describe TeiToFo::Stack do
       end
     end
   end
+
+  describe '#[](index)' do
+    it 'returns the element at index index' do
+      expect{stack[0]}.to raise_error(TeiToFo::StackIndexOutOfBounds)
+    end
+  end
 end
