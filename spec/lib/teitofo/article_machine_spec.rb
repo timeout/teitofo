@@ -40,4 +40,22 @@ RSpec.describe TeiToFo::ArticleMachine do
       end
     end
   end
+
+  describe '#success?' do
+    it 'returns false' do
+      expect(machine.success?).to be_falsey
+    end
+
+    it 'returns false' do
+      machine.on_element_start(:article)
+      expect(machine.success?).to be_falsey
+    end
+
+    it 'returns true' do
+      machine.on_element_start(:article)
+      machine.on_element_end(:article)
+      expect(machine.success?).to be_truthy
+    end
+  end
+
 end
