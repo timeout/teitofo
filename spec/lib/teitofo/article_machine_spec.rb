@@ -58,4 +58,31 @@ RSpec.describe TeiToFo::ArticleMachine do
     end
   end
 
+  describe '#article' do
+    it 'returns an article' do
+      machine.on_element_start(:article)
+      machine.on_element_end(:article)
+      expect(machine.article.name).to eq(:article)
+    end
+
+    it 'returns an article' do
+      machine.on_element_start(:article)
+      machine.on_element_start(:body)
+      machine.on_element_end(:body)
+      machine.on_element_end(:article)
+      expect(machine.article.name).to eq(:article)
+    end
+
+    describe 'raises an IncompleteArticleError' do
+      it 'has not processed an article' do
+        expect{ machine.article }.to raise_error(TeiToFo::IncompleteArticleError)
+      end
+
+      it 'is in an incomplete state' do
+        machine.on_element_start(:article)
+        expect{ machine.article }.to raise_error(TeiToFo::IncompleteArticleError)
+      end
+    end
+  end
+
 end

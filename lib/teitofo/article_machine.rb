@@ -1,13 +1,13 @@
 require 'teitofo/article_part'
 require 'teitofo/stack'
+require 'teitofo/exceptions'
 
 module TeiToFo
   class ArticleMachine
 
     def initialize
-      @state = nil
+      @article = @state = nil
       @stack = Stack.new
-      @has_changed_state = false
     end
 
     attr_reader :state
@@ -17,15 +17,21 @@ module TeiToFo
     end
 
     def success?
-      (false ^ @has_changed_state) && @state.nil?
+      has_started_processing? && @state.nil?
+    end
+
+    def article
+      raise IncompleteArticleError.new("incomplete article: #{@stack}") unless success?
+      @article
     end
 
     # delegate methods
     def on_element_start(name)
-      @state = ArticlePart.new
-      @state.name = name
+      new_state = ArticlePart.new
+      new_state.name = name
+      @article ||= new_state
+      @state = new_state
       @stack.push(@state)
-      @has_changed_state ||= true
     end
 
     def on_element_end(name)
@@ -36,5 +42,9 @@ module TeiToFo
     def on_text(value)
     end
 
+    private
+    def has_started_processing?
+      @article
+    end
   end
 end
