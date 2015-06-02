@@ -23,6 +23,8 @@ module TeiToFo
     end
 
     def on_element_end(name)
+      @stack.pop
+      @state = @stack.top
     end
 
     def on_text(value)

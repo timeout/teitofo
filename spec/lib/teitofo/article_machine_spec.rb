@@ -22,11 +22,21 @@ RSpec.describe TeiToFo::ArticleMachine do
     describe 'returns the number of states currently on the stack' do
       it 'returns 0' do
         expect(machine.stack_size).to eq(0)
+        expect(machine.state).to be_nil
       end
 
       it 'returns 1' do
         machine.on_element_start(:article)
         expect(machine.stack_size).to eq(1)
+        expect(machine.state.class).to eq(TeiToFo::ArticlePart)
+        expect(machine.state.name).to eq(:article)
+      end
+
+      it 'returns 0' do
+        machine.on_element_start(:article)    # article |
+        machine.on_element_end(:article)      # |
+        expect(machine.stack_size).to eq(0)
+        expect(machine.state).to be_nil
       end
     end
   end
