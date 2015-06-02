@@ -30,14 +30,15 @@ module TeiToFo
       new_state = ArticlePart.new
       new_state.name = name
 
-      if has_started_processing?
-        @state = @stack.top
-        @state.add_part(new_state)
+      unless has_started_processing?
+        @article ||= new_state
+        push_state(new_state)
+        return @state
       end
 
-      @article ||= new_state
-      @state = new_state
-      @stack.push(@state)
+      add_new_part(new_state)
+      push_state(new_state)
+      @state
     end
 
     def on_element_end(name)
@@ -51,6 +52,16 @@ module TeiToFo
     private
     def has_started_processing?
       @article
+    end
+
+    def push_state(new_state)
+      @state = new_state
+      @stack.push(@state)
+    end
+
+    def add_new_part(new_state)
+      @state = @stack.top
+      @state.add_part(new_state)
     end
   end
 end
