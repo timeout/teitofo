@@ -12,7 +12,9 @@ module TeiToFo
     end
 
     def number_of_parts
-      @article_parts.size
+      count = 1
+      @article_parts.each { |part| count += part.number_of_parts }
+      count
     end
 
   end
