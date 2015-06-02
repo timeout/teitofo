@@ -29,6 +29,12 @@ module TeiToFo
     def on_element_start(name)
       new_state = ArticlePart.new
       new_state.name = name
+
+      if has_started_processing?
+        @state = @stack.top
+        @state.add_part(new_state)
+      end
+
       @article ||= new_state
       @state = new_state
       @stack.push(@state)
