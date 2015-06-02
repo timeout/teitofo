@@ -16,4 +16,10 @@ module TeiToFo
 
   class IncompleteArticleError < ArticleMachineError
   end
+
+  class TextPartError < Error
+  end
+
+  class EmptyTextPartError < TextPartError
+  end
 end
