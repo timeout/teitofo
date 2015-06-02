@@ -17,7 +17,7 @@ module TeiToFo
 
     def [](n)
       if (n < 0 or n >= self.size)
-        raise StackIndexOutOfBounds.new("for #{self}")
+        raise StackIndexOutOfBoundsError.new("for #{self}")
       end
       @data.reverse[n]
     end
@@ -27,7 +27,7 @@ module TeiToFo
     end
 
     def pop
-      raise StackEmpty.new("for: #{self}") if @data.empty?
+      raise StackEmptyError.new("for: #{self}") if @data.empty?
       @data.pop
     end
 

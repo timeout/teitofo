@@ -16,7 +16,7 @@ RSpec.describe TeiToFo::Stack do
 
     describe 'raises StackEmpty if empty stack is popped' do
       it 'raises StackEmpty' do
-        expect{stack.pop}.to raise_error(TeiToFo::StackEmpty)
+        expect{stack.pop}.to raise_error(TeiToFo::StackEmptyError)
       end
     end
   end
@@ -53,7 +53,7 @@ RSpec.describe TeiToFo::Stack do
 
   describe '#[](index)' do
     it 'returns the element at index index' do
-      expect{stack[0]}.to raise_error(TeiToFo::StackIndexOutOfBounds)
+      expect{stack[0]}.to raise_error(TeiToFo::StackIndexOutOfBoundsError)
     end
 
     it 'returns 30' do
