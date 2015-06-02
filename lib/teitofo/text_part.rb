@@ -1,7 +1,7 @@
 module TeiToFo
   class TextPart
 
-    def initialize(type)
+    def initialize(type = :text)
       @type = type
     end
 
