@@ -19,6 +19,7 @@ module TeiToFo
     def on_element_start(name)
       @state = ArticlePart.new
       @state.name = name
+      @stack.push(@state)
     end
 
     def on_element_end(name)
