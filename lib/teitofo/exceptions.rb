@@ -5,10 +5,15 @@ module TeiToFo
   class StackError < Error
   end
 
-  class StackEmpty < StackError
+  class StackEmptyError < StackError
   end
 
-  class StackIndexOutOfBounds < StackError
+  class StackIndexOutOfBoundsError < StackError
   end
 
+  class ArticleMachineError < Error
+  end
+
+  class IncompleteArticleError < ArticleMachineError
+  end
 end
