@@ -11,7 +11,7 @@ module TeiToFo
     attr_reader :type, :text
 
     def to_s
-      "#{type}: #{text}"
+      "#{text}"
     end
 
   end

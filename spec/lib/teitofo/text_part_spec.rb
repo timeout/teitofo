@@ -29,13 +29,13 @@ RSpec.describe TeiToFo::TextPart do
   end
 
   describe '#to_s' do
-    it 'creates the string: "text: This is some text"' do
-      expect(text_part.to_s).to eq('text: This is some text')
+    it 'creates the string: "This is some text"' do
+      expect(text_part.to_s).to eq('This is some text')
     end
 
-    it 'creates the string: "italic: IMPORTANT"' do
+    it 'creates the string: "IMPORTANT"' do
       italic_text = TeiToFo::TextPart.new('IMPORTANT', :italic)
-      expect(italic_text.to_s).to eq('italic: IMPORTANT')
+      expect(italic_text.to_s).to eq('IMPORTANT')
     end
   end
 
