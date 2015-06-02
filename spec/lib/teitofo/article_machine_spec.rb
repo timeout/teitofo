@@ -103,6 +103,17 @@ RSpec.describe TeiToFo::ArticleMachine do
       article = machine.article
       expect(article.number_of_parts).to eq(3)
     end
+
+    it 'the article has 2 sub part' do
+      machine.on_element_start(:article)
+      machine.on_element_start(:front)
+      machine.on_element_start(:body)
+      machine.on_element_end(:body)
+      machine.on_element_end(:front)
+      machine.on_element_end(:article)
+      article = machine.article
+      expect(article.number_of_parts).to eq(3)
+    end
   end
 
 end
